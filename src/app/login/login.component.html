@@ -1,0 +1,25 @@
+<form #loginForm="ngForm" class="col s12 white">
+  <div class="sm-jumbotron center-align">
+    <h2>Inicio de sesión en Share a Sit</h2>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" #UserName ngModel name="UserName" placeholder="Correo electrónico @unal.edu.co" required>
+    </div>
+  </div>
+  <div class="row">
+     <div class="input-field col s12">
+       <input type="password" #Password ngModel name="Password" placeholder="Contraseña" required>
+     </div>
+   </div>
+   <div class="row">
+       <div class="input-field col s12">
+         <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+       </div>
+     </div>
+
+     <div class="sm-jumbotron center-align">
+        <a href="http://localhost:4200/sign-up.component.html">¿No estás registrado? Regístrate.</a>
+      </div>
+     
+</form>
