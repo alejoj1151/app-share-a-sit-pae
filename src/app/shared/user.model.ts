@@ -1,8 +1,11 @@
+import {SignUpComponent } from '../sign-up/sign-up.component';
+
 export class User {
-    public Cedula: number;
-    public Password: string;
-    public Email: string; //recordar la validacion del @unal.edu.co
-    public FirstName: string;
-    public LastName: string;
+    public document: number;
+    public password: string;
+    public firstname: string;
+    public lastname: string;
+    public email: string; //recordar la validacion del @unal.edu.co
+    
     
 }

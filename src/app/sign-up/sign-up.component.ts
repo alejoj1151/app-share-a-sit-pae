@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
   pruebita = 'Esto es una prueba';
 
   user: User;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[a-z0-9._%+-]+@unal.edu.co$";
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -27,11 +27,11 @@ export class SignUpComponent implements OnInit {
     if (form != null)
       form.reset();
     this.user = {
-      Cedula: null,
-      Password: '',
-      Email: '',
-      FirstName: '',
-      LastName: ''
+      document: null,
+      password: '',
+      firstname: '',
+      lastname: '',
+      email: ''
     }
   }
 
@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
       .subscribe((data: any) => {
         if (data.Succeeded == true) {
           this.resetForm(form);
-          this.toastr.success('User registration successful');
+          this.toastr.success('Registro Exitoso');
         }
         else
           this.toastr.error(data.Errors[0]);
