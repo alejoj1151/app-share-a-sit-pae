@@ -18,13 +18,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  user1: User ={
-      document: 10404576,
-      password: 'fasdasd',
-      firstname: 'charlie',
-      lastname: 'cruz',
-      email: 'charl@unal.edu.co'
-  }
+ 
 
 //////////SAVE METHODS //////////////
 
@@ -35,11 +29,10 @@ export class UserService {
       document: user.document,
       password: user.password,
       firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email
-      
+      lastname:  user.lastname,
+      email: user.email,
     }
-    return this.http.post<User>(this.userURL,user,httpOptions);
+    return this.http.post<User>(this.userURL,body,httpOptions);
   }
 
 
