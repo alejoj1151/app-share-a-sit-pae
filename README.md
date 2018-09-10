@@ -1,3 +1,8 @@
+#Desarrolladores
+Carlos Mario Estrada Puerta - Front-End
+Juan Pablo Betancur Giraldo - Back-End
+Alejandro Jaramillo Hidalgo - Database Manager
+
 # Register
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.

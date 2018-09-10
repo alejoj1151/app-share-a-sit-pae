@@ -1,8 +1,8 @@
 export class User {
-    Cedula: number;
-    Password: string;
-    Email: string; //recordar la validacion del @unal.edu.co
-    FirtsName: string;
-    LastName: string;
+    public Cedula: number;
+    public Password: string;
+    public Email: string; //recordar la validacion del @unal.edu.co
+    public FirstName: string;
+    public LastName: string;
     
 }

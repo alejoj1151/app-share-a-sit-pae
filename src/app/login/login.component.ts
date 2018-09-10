@@ -8,6 +8,8 @@ import { User } from '../shared/user.model';
 })
 export class LoginComponent implements OnInit {
 
+  prueba = ' esto es una prueba';
+
   constructor() { }
 
   ngOnInit() {
