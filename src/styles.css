@@ -1,16 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-div.sm-jumbotron{
-    margin: 0px;
-    padding: 2rem;
-    background-color: #38547b;
-    color: #fff;
-}
+/*
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";*/
 
-button.btn-submit{
-    background-color: #38547b;
-    color: #fff;
-    width: 100%;
-}
-button.btn-submit:focus,button.btn-submit:hover{
-    background-color: #38547b;
-}
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+

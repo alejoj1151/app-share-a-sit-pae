@@ -5,6 +5,8 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
 import {Observable} from 'rxjs';
+
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,6 +17,8 @@ const httpOptions = {
 })
 export class UserService {
   userURL= 'http://localhost:8080/users';
+
+  loginURL= 'http://localhost:8080/users/login?';
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +39,12 @@ export class UserService {
     return this.http.post<User>(this.userURL,body,httpOptions);
   }
 
+  //Va al backend, luego este se encarga de bus
+  userAuthentication(email, password) {
+    var data = "email=" + email + "&password=" + password;
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json;charset=UTF-8'});
+    return this.http.get(this.loginURL + data);
+  }
 
 
   //json = JSON.stringify(this.user1);

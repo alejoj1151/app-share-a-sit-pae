@@ -1,0 +1,15 @@
+div.sm-jumbotron{
+    margin: 0px;
+    padding: 2rem;
+    background-color: #dbe2d2;
+    color: rgb(0, 0, 0);
+}
+
+button.btn-submit{
+    background-color: #00e5e4;
+    color: #fff;
+    width: 100%;
+}
+button.btn-submit:focus,button.btn-submit:hover{
+    background-color: #00e5e4;
+}
