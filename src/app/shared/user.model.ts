@@ -1,5 +1,5 @@
 import {SignUpComponent } from '../sign-up/sign-up.component';
-import { vehicle } from '../models/vehicle.model';
+import { Vehicle } from '../models/vehicle.model';
 
 
 export class User {

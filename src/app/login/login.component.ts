@@ -4,6 +4,8 @@ import { UserService } from '../shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { and } from '@angular/router/src/utils/collection';
+import { ToastrService } from 'ngx-toastr'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   isLoginError : boolean = false;
   prueba = ' esto es una prueba';
 
-  constructor(private userService : UserService,private router : Router) { }
+  constructor(private userService : UserService,private router : Router,  private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit {
     //console.log('{"email":' +'"'+ email + '"' + '}');
     
     var jsonemail = JSON.stringify(userjson,['email']);
+    //JSON.stringify(userjson,['id']
+    localStorage.setItem("tokenID",userjson.id); //guardo el ID del usuario en una variable local
 
     //console.log(jsonemail);
     //console.log('{"password":' +'"'+ password + '"' + '}');
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
     if ( (jsonemail === '{"email":' +'"'+ email + '"' + '}')) {
       this.router.navigate(['/home']);
     } else {
-      
+      this.toastr.error('Usuario o contraseña inválidos');
     }
     
 

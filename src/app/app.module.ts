@@ -11,15 +11,24 @@ import { LoginService } from './login.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
+import { AsksitComponent } from './asksit/asksit.component';
+import { OffersitComponent } from './offersit/offersit.component';
+import { SignUpVehicleComponent } from './sign-up-vehicle/sign-up-vehicle.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AsksitComponent,
+    OffersitComponent,
+    SignUpVehicleComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     BrowserModule,
     FormsModule,

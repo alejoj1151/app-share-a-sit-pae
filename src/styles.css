@@ -4,3 +4,7 @@
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus {
+    background-color: #00e5e4 !important;
+    border-color: #00e5e4;
+}
