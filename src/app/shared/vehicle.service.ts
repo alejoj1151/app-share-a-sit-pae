@@ -50,7 +50,9 @@ export class VehicleService {
 ////////////// SERVICIO PARA BORRAR UN VEHICULO //////////////////
 
   deleteVehicle(placa){
-    return this.http.delete(this.deletevehicleURL+placa);
+    return this.http.delete(this.deletevehicleURL+placa, {
+      responseType: 'text',
+    });
     
   }
 
