@@ -3,7 +3,7 @@
     <form #vehicleRegistrationForm="ngForm" (ngSubmit)="OnSubmit(vehicleRegistrationForm)">
       <div class="form-group">
         <label for="exampleFormControlInput1">Placa</label>
-        <input type="text" class="form-control" name="numberplate" #Documento="ngModel" [(ngModel)]="numberplate" placeholder="ABC-123" required>
+        <input type="text" class="form-control" name="numberplate" #Documento="ngModel" [(ngModel)]="numberplate" placeholder="ABC123" required>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo de vehículo</label>
@@ -24,4 +24,11 @@
         Registrar vehículo
       </button>
     </form>
+</div>
+
+<div class="container" style="text-align: center">
+  <p class="lead">Borrar vehículo</p>
+  <label for="exampleFormControlInput1">Inserte la placa del vehículo a borrar</label>
+  <input type="text" placeholder="ABC123" name="platetodelete" [(ngModel)]="platetodelete">
+  <button class="btn btn-primary" (click)="borrarVehiculoClick()">Borrar vehículo</button>
 </div>

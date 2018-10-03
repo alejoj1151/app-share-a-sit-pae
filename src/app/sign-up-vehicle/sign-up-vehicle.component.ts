@@ -18,7 +18,8 @@ export class SignUpVehicleComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
   }
-
+  
+  platetodelete; //viene del html
 
   resetForm(form?: NgForm) {
     if (form != null)
@@ -40,7 +41,22 @@ export class SignUpVehicleComponent implements OnInit {
           return true;
         }
         else
-          this.toastr.error('Falló el registro de vehpiculo');
+          this.toastr.error('Falló el registro de vehiculo');
       });
+  }
+
+  borrarVehiculoClick(){
+    this.vehicleService.deleteVehicle(this.platetodelete).subscribe((mensaje: any)=> {
+      if (mensaje== 'The Vehicle was deleted successfully.') {
+      this.toastr.success('vehiculo borrado')
+      return true;
+      }
+      else
+        this.toastr.error('Vehículo no existe');
+    });
+  }
+
+  elegirVehiculo(){
+
   }
 }

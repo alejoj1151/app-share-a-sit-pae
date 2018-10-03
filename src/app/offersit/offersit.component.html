@@ -1,6 +1,6 @@
 <p class="lead">Selecciona un vehículo</p>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table" >
       <thead>
         <tr>
           <th scope="col">Placa</th>
@@ -10,44 +10,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">SMN-784</th>
-          <td>Camioneta</td>
-          <td>4</td>
-          <td><button type="button" class="btn btn-dark">Elegir</button></td>
-        </tr>
-        <tr>
-          <th scope="row">GHW-487</th>
-          <td>Carro</td>
-          <td>4</td>
-          <td><button type="button" class="btn btn-dark">Elegir</button></td>
-        </tr>
-        <tr>
-          <th scope="row">RUH-452</th>
-          <td>{{Moto}}</td>
-          <td>1</td>
-          <td><button type="button" class="btn btn-dark">Elegir</button></td>
+        <tr *ngFor="let vehiculo of vehiculos">
+          <th scope="row">{{vehiculo.numberplate}}</th>
+          <td>{{vehiculo.type}}</td>
+          <td>{{vehiculo.totalseats}}</td>
+          <td><button type="button" class="btn btn-dark" (click)="elegirVehiculo()">Elegir</button></td>
         </tr>
       </tbody>
     </table>
   </div>
-
 <div class="container">
   <p class="lead">Elige destino</p>
   <form>
     <div class="form-group">
       <label for="exampleFormControlSelect1">Tipo de vehículo</label>
       <select class="form-control" id="exampleFormControlSelect1" required>
-        <option>Unal-Sede Volador</option>
-        <option>Unal-Sede Minas</option>
+        <option>volador</option>
+        <option>minas</option>
       </select>
     </div>
   </form>
 </div>
 
 <div class="container">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Iniciar viaje</button>
-    <h1> </h1>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="ofrecerpuestoBoton()">Iniciar viaje</button>
+    <h1> {{mensaje}}</h1>
     <h2> </h2>
 </div>
 

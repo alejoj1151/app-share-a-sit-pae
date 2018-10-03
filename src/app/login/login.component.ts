@@ -32,15 +32,16 @@ export class LoginComponent implements OnInit {
     
     var jsonemail = JSON.stringify(userjson,['email']);
     //JSON.stringify(userjson,['id']
-    localStorage.setItem("tokenID",userjson.id); //guardo el ID del usuario en una variable local
 
     //console.log(jsonemail);
     //console.log('{"password":' +'"'+ password + '"' + '}');
 
-    if ( (jsonemail === '{"email":' +'"'+ email + '"' + '}')) {
+    if ( (jsonemail === '{"email":' +'"'+ email.toLowerCase() + '"' + '}')) {
+      localStorage.setItem("tokenID",userjson.id); //guarda el ID del usuario en una variable local, util para solicitudes http
+      localStorage.setItem("nombreusuario", userjson.firstname); // guarda el nombre del usuario, para quemarlo en la pantalla de bienvenida
       this.router.navigate(['/home']);
     } else {
-      this.toastr.error('Usuario o contraseña inválidos');
+      this.toastr.error('Usuario o contraseña incorrectos');
     }
     
 
