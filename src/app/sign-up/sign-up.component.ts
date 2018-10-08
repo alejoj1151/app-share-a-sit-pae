@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
     this.userService.registerUser(form.value)
       .subscribe((data: any) => {
         //console.log(form.value)
-        if (data !== true) {
+        if (data == true) {
           this.resetForm(form);
           this.toastr.success('Registro Exitoso');
           return true;

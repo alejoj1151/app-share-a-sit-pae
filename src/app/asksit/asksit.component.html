@@ -1,4 +1,4 @@
-<form #filterTravelsForm="ngForm">
+<form #filterTravelsForm="ngForm" (ngSubmit)="OnSubmit(filterTravelsForm)">
     <p class="lead">Filtras viajes entre horas y lugar de origen (sede en la que te encuentras).</p>
   <div class="input-field col s40">
     <input class="validate" type="text" name="horainicio" #HoraSalida="ngModel" [(ngModel)]="horainicio" [pattern]="hourpattern" required>
@@ -13,7 +13,7 @@
       <option>volador</option>
       <option>minas</option>
     </select>    
-  <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="!filterTravelsForm.valid" (click)="filterTravelsBoton()">Filtrar</button>
+  <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!filterTravelsForm.valid">Filtrar</button>
     
 </form>
 
@@ -35,7 +35,7 @@
           <td>{{filtrado.hour}}</td>
           <td>{{filtrado.vehicle.type}}</td>
           <td>{{filtrado.available_seats}}</td>
-          <td><button type="button" class="btn btn-dark">Reservar</button></td>
+          <td><button type="button" class="btn btn-dark" (click)="reservarPuesto(filtrado.vehicle.id)">Reservar</button></td>
         </tr>
       </tbody>
     </table>

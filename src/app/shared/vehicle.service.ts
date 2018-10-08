@@ -6,6 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from "@angular/http";
 import {Observable} from 'rxjs';
 import { Vehicle } from '../models/vehicle.model';
+import { puts } from 'util';
+import { TouchSequence } from 'selenium-webdriver';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,6 +22,7 @@ export class VehicleService {
   deletevehicleURL = 'http://localhost:8080/users/delete-vehicles?id=' + localStorage.getItem("tokenID") + '&numberplate=';
   insertravelURL; //para ejecutar en celulares, recordar cambiar en el método registertravel
   filtertravelListURL;
+  takeSitURL; 
 
   constructor(private http: HttpClient) { }
 
@@ -88,8 +91,15 @@ export class VehicleService {
     console.log(this.filtertravelListURL);
     return this.http.get(this.filtertravelListURL);
   }
-
-
-
 ////////////////////////////////////////////////////////////////
+
+
+///////////// SERVICIO PARA TOMAR PUESTO //////////////////////
+
+  takesitService(vehiculoID){
+    this.takeSitURL= 'http://localhost:8080/travels/register?vehicleid='+ vehiculoID +'&passagerid='+ localStorage.getItem("tokenID");
+    return this.http.put(this.takeSitURL,httpOptions);
+  }
+
+////////////////////////////////////////////////////////////
 }

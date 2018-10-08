@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AsksitComponent } from './asksit/asksit.component';
 import { OffersitComponent } from './offersit/offersit.component';
 import { SignUpVehicleComponent } from './sign-up-vehicle/sign-up-vehicle.component';
+import { SittakenComponent } from './sittaken/sittaken.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'home' , component: HomeComponent },
   { path: 'asksit', component: AsksitComponent},
   { path: 'offersit', component: OffersitComponent},
-  { path: 'registervehicle', component: SignUpVehicleComponent}
+  { path: 'registervehicle', component: SignUpVehicleComponent},
+  { path: 'sittaken' , component: SittakenComponent}
 ];
 
 

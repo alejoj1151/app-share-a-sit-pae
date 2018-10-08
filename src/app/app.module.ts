@@ -16,6 +16,7 @@ import { OffersitComponent } from './offersit/offersit.component';
 import { SignUpVehicleComponent } from './sign-up-vehicle/sign-up-vehicle.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SittakenComponent } from './sittaken/sittaken.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AsksitComponent,
     OffersitComponent,
-    SignUpVehicleComponent
+    SignUpVehicleComponent,
+    SittakenComponent
   ],
   imports: [
     CommonModule,
