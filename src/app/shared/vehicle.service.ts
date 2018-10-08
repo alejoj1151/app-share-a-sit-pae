@@ -18,15 +18,17 @@ export class VehicleService {
   vehicleURL= 'http://localhost:8080/users/add-vehicles/'+ localStorage.getItem("tokenID");  //URL para registrar vehiculo asociado a un ID
   listvehicleURL= 'http://localhost:8080/users/vehicles?id=' + localStorage.getItem("tokenID"); // obtener la lista de vehiculos asociados a un ID
   deletevehicleURL = 'http://localhost:8080/users/delete-vehicles?id=' + localStorage.getItem("tokenID") + '&numberplate=';
+  insertravelURL = 'http://localhost:8080/travels/insert?vehicleid=' + localStorage.getItem("vehicleID") +   '&driverid=' + localStorage.getItem("tokenID");
 
 
   constructor(private http: HttpClient) { }
 
+///////////// SERVICIO PARA REGISTRAR UN VEHÍCULO /////////////////  
   registerVehicle(vehicle : Vehicle): Observable<Vehicle>{
-    //const car = new Vehicle(vehicle.numberplate,vehicle.type,vehicle.$totalseats);
+    //const car = new Vehicle(vehicle.numberplate,vehicle.type,vehicle.$totalseats); 
     //const body = JSON.stringify(car);
 
-///////////// SERVICIO PARA REGISTRAR UN VEHÍCULO /////////////////    
+  
     const bodyj = {	"vehicles":[
       {
         "numberplate": vehicle.numberplate,
@@ -34,7 +36,7 @@ export class VehicleService {
         "totalseats": vehicle.totalseats
       }
     ]
-  }
+    }
     return this.http.put<Vehicle>(this.vehicleURL,bodyj,httpOptions);
   }
 ///////////////////////////////////////////////////////////////////
@@ -55,6 +57,24 @@ export class VehicleService {
     });
     
   }
+
+//////////////////////////////////////////////////////////////////
+
+
+/////////////// SERVICIO PARA INSERTAR UN VIAJE ///////////////
+
+  registerTravel(disponibles, origen, hora){
+    const travelBody = {
+      "available_seats": disponibles,
+      "origen": origen,
+      "hour": hora
+    }
+    console.log(this.insertravelURL);
+    console.log(travelBody);
+    return this.http.put<any>(this.insertravelURL,travelBody,httpOptions);
+  }
+
+
 
 //////////////////////////////////////////////////////////////////
 }

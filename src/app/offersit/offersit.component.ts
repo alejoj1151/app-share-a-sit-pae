@@ -12,7 +12,12 @@ import { VehicleService } from '../shared/vehicle.service';
 export class OffersitComponent implements OnInit {
 
   carro: Vehicle;
+  puestosaofrecer;
+  sededestino;
+  horasalida;
 
+  hourpattern = '^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$';
+  puestospattern = '^[1-9]$'
   carros: Vehicle[];
   listavehiculos: any;
   vehiculos = []; //lista donde se guardan los vehiculos obtenidos por el servicio getListVehicles
@@ -47,4 +52,13 @@ export class OffersitComponent implements OnInit {
 
   }
 
+  elegirVehiculo(idPassedFromNgClick){
+    localStorage.setItem("vehicleID",idPassedFromNgClick,);
+    console.log(idPassedFromNgClick);
+  }
+
+  ofrecerpuestoBoton(){
+    console.log(this.puestosaofrecer+this.sededestino+this.horasalida);
+    this.vehicleService.registerTravel(this.puestosaofrecer,this.sededestino,this.horasalida);
+  }
 }

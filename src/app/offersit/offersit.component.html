@@ -1,4 +1,4 @@
-<p class="lead">Selecciona un vehículo</p>
+<p class="lead">Tus vehículos</p>
   <div class="table-responsive">
     <table class="table" >
       <thead>
@@ -14,26 +14,37 @@
           <th scope="row">{{vehiculo.numberplate}}</th>
           <td>{{vehiculo.type}}</td>
           <td>{{vehiculo.totalseats}}</td>
-          <td><button type="button" class="btn btn-dark" (click)="elegirVehiculo()">Elegir</button></td>
+          <button class="btn btn-dark" (click)=elegirVehiculo(vehiculo.id)>Elegir</button>
         </tr>
       </tbody>
     </table>
   </div>
 <div class="container">
-  <p class="lead">Elige destino</p>
-  <form>
+  <p class="lead">Configura tu viaje</p>
+  <label for="vehiculoprevio">Recuerde haber elegido un vehículo previamente</label>
+  <form #travelRegistrationForm="ngForm">
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Tipo de vehículo</label>
-      <select class="form-control" id="exampleFormControlSelect1" required>
-        <option>volador</option>
-        <option>minas</option>
-      </select>
+        <p class="lead">Sede destino</p>
+        <select class="form-control" name="sededestino" [(ngModel)]="sededestino" required>
+          <option>volador</option>
+          <option>minas</option>
+        </select>    
+      <div class="input-field col s40">
+        <input class="validate" type="number" name="puestosaofrecer" #PuestosOfrecer="ngModel" [(ngModel)]="puestosaofrecer" [pattern]="puestospattern" required>
+        <label data-error="Inserta un valor entre 1 y 9">Puestos que vas a ofrecer</label>
+      </div>
+      <div class="input-field col s40">
+        <input class="validate" type="text" name="horasalida" #HoraSalida="ngModel" [(ngModel)]="horasalida" [pattern]="hourpattern" required>
+        <label data-error="Inserta un formato válido Ejemplo: 18:30">Hora de salida</label>
+      </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="!travelRegistrationForm.valid" (click)="ofrecerpuestoBoton()">Ofrecer</button>
     </div>
   </form>
 </div>
 
+
+
 <div class="container">
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="ofrecerpuestoBoton()">Iniciar viaje</button>
     <h1> {{mensaje}}</h1>
     <h2> </h2>
 </div>
