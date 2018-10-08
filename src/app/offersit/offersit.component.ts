@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { VehicleService } from '../shared/vehicle.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class OffersitComponent implements OnInit {
   vehiculos = []; //lista donde se guardan los vehiculos obtenidos por el servicio getListVehicles
   
 
-  constructor(private vehicleService: VehicleService) { }
+  constructor(private vehicleService: VehicleService, private toastr: ToastrService) { }
 
   ngOnInit() {
     //this.vehiculos=[];
@@ -53,12 +53,19 @@ export class OffersitComponent implements OnInit {
   }
 
   elegirVehiculo(idPassedFromNgClick){
-    localStorage.setItem("vehicleID",idPassedFromNgClick,);
-    console.log(idPassedFromNgClick);
+    localStorage.setItem("vehicleID",idPassedFromNgClick);
+    console.log(localStorage.getItem("vehicleID"));
   }
 
   ofrecerpuestoBoton(){
     console.log(this.puestosaofrecer+this.sededestino+this.horasalida);
-    this.vehicleService.registerTravel(this.puestosaofrecer,this.sededestino,this.horasalida);
+    this.vehicleService.registerTravel(this.puestosaofrecer,this.sededestino,this.horasalida).subscribe((mensaje: any)=> {
+      if (mensaje !== null) {
+        this.toastr.success('Viaje registrado')
+        return true;
+      }
+      else
+        this.toastr.error('Viaje no registrado');
+    });
   }
 }

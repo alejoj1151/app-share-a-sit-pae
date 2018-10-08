@@ -71,7 +71,7 @@ export class VehicleService {
     }
     console.log(this.insertravelURL);
     console.log(travelBody);
-    return this.http.put<any>(this.insertravelURL,travelBody,httpOptions);
+    return this.http.put(this.insertravelURL,travelBody,httpOptions);
   }
 
 
