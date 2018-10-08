@@ -1,3 +1,22 @@
+<form #filterTravelsForm="ngForm">
+    <p class="lead">Filtras viajes entre horas y lugar de origen (sede en la que te encuentras).</p>
+  <div class="input-field col s40">
+    <input class="validate" type="text" name="horainicio" #HoraSalida="ngModel" [(ngModel)]="horainicio" [pattern]="hourpattern" required>
+    <label data-error="Inserta un formato válido Ejemplo: 18:30">Inicio</label>
+  </div>
+  <div class="input-field col s40">
+    <input class="validate" type="text" name="horasalida" #HoraSalida="ngModel" [(ngModel)]="horasalida" [pattern]="hourpattern" required>
+    <label data-error="Inserta un formato válido Ejemplo: 18:30">Fin</label>
+  </div>
+  <p class="lead">Origen (Sede en la que estás)</p>
+    <select class="form-control" name="origen" [(ngModel)]="origen" required>
+      <option>volador</option>
+      <option>minas</option>
+    </select>    
+  <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="!filterTravelsForm.valid" (click)="filterTravelsBoton()">Filtrar</button>
+    
+</form>
+
 <p class="lead">Elige un viaje</p>
   <div class="table-responsive">
     <table class="table">
@@ -11,11 +30,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">UNAL-Sede Volador</th>
-          <td>8:00AM</td>
-          <td>Camioneta Audi Q7</td>
-          <td>4</td>
+        <tr  *ngFor="let filtrado of filtrados">
+          <th scope="row">{{filtrado.destination}}</th>
+          <td>{{filtrado.hour}}</td>
+          <td>{{filtrado.vehicle.type}}</td>
+          <td>{{filtrado.available_seats}}</td>
           <td><button type="button" class="btn btn-dark">Reservar</button></td>
         </tr>
       </tbody>

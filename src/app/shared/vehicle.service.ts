@@ -18,8 +18,8 @@ export class VehicleService {
   vehicleURL= 'http://localhost:8080/users/add-vehicles/'+ localStorage.getItem("tokenID");  //URL para registrar vehiculo asociado a un ID
   listvehicleURL= 'http://localhost:8080/users/vehicles?id=' + localStorage.getItem("tokenID"); // obtener la lista de vehiculos asociados a un ID
   deletevehicleURL = 'http://localhost:8080/users/delete-vehicles?id=' + localStorage.getItem("tokenID") + '&numberplate=';
-  insertravelURL = 'http://localhost:8080/travels/insert?vehicleid=' + localStorage.getItem("vehicleID") +   '&driverid=' + localStorage.getItem("tokenID");
-
+  insertravelURL; //para ejecutar en celulares, recordar cambiar en el método registertravel
+  filtertravelListURL;
 
   constructor(private http: HttpClient) { }
 
@@ -64,6 +64,8 @@ export class VehicleService {
 /////////////// SERVICIO PARA INSERTAR UN VIAJE ///////////////
 
   registerTravel(disponibles, origen, hora){
+    this.insertravelURL = 'http://localhost:8080/travels/insert?vehicleid=' + localStorage.getItem("vehicleID") + '&driverid=' + localStorage.getItem("tokenID");
+
     const travelBody = {
       "available_seats": disponibles,
       "origen": origen,
@@ -77,4 +79,17 @@ export class VehicleService {
 
 
 //////////////////////////////////////////////////////////////////
+
+/////////////// SERVICIO PARA FILTRAR VIAJES ////////////////////
+
+
+  filterTravel(horainicio ,horasalida,origen){
+    this.filtertravelListURL = 'http://localhost:8080/travels/search?origen='+origen+'&hourstart='+horainicio+'&hourend='+horasalida;
+    console.log(this.filtertravelListURL);
+    return this.http.get(this.filtertravelListURL);
+  }
+
+
+
+////////////////////////////////////////////////////////////////
 }

@@ -58,10 +58,10 @@ export class OffersitComponent implements OnInit {
   }
 
   ofrecerpuestoBoton(){
-    console.log(this.puestosaofrecer+this.sededestino+this.horasalida);
+    //console.log(this.puestosaofrecer+this.sededestino+this.horasalida);
     this.vehicleService.registerTravel(this.puestosaofrecer,this.sededestino,this.horasalida).subscribe((mensaje: any)=> {
       if (mensaje !== null) {
-        this.toastr.success('Viaje registrado')
+        this.toastr.success('Viaje registrado');
         return true;
       }
       else
