@@ -4,6 +4,7 @@ import { Vehicle } from '../models/vehicle.model';
 import { Router } from '@angular/router';
 import { OffersitComponent } from '../offersit/offersit.component';
 import { AppComponent } from '../app.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { AppComponent } from '../app.component';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(private vehicleService: VehicleService,private router : Router, private appcomp : AppComponent) { }
+  constructor(private vehicleService: VehicleService,private router : Router, private appcomp : AppComponent, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.appcomp.desactivarBoton(false);
@@ -22,7 +23,28 @@ export class HomeComponent implements OnInit {
   nomusuario = localStorage.getItem("nombreusuario");
   listavehiculos:JSON;
 
-  
+  ClickBotonPedirPuesto() {
+    this.vehicleService.ispassengertravelService().subscribe((mensaje: any)=> {
+      if (mensaje == true) {
+        this.toastr.success('Ya solicitaste un puesto');
+        this.router.navigate(['/sittaken']);
+      }
+      else
+      this.router.navigate(['/asksit']);
+    });
+    
+  }
+
+  ClickBotonOfrecerPuesto() {
+    this.vehicleService.ispassengertravelService().subscribe((mensaje: any)=> {
+      if (mensaje == true) {
+        this.toastr.success('Ya registraste un viaje');
+        this.router.navigate(['/offered']);
+      }
+      else
+      this.router.navigate(['/offersit']);
+    });
+  }
 
 }
 

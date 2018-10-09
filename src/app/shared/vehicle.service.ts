@@ -24,6 +24,9 @@ export class VehicleService {
   filtertravelListURL;
   takeSitURL; 
 
+  isdrivertravelURL; 
+  ispassengertravelURL;
+
   constructor(private http: HttpClient) { }
 
 ///////////// SERVICIO PARA REGISTRAR UN VEHÍCULO /////////////////  
@@ -103,4 +106,25 @@ export class VehicleService {
 
   
 ////////////////////////////////////////////////////////////
+
+
+//// SERVICIO PARA COMPROBAR YA ES CONDUCTOR DE UN VIAJE ///
+
+  isdrivertravelService() {
+    this.isdrivertravelURL= 'http://localhost:8080/travels/isdriver?id='+ localStorage.getItem("tokenID");
+    return this.http.get(this.isdrivertravelURL);
+  }
+
+////////////////////////////////////////////////////////////
+
+
+//// SERVICIO PARA COMPROBAR YA ES PASAJERO DE UN VIAJE ////
+
+ispassengertravelService() {
+  this.ispassengertravelURL= 'http://localhost:8080/travels/ispassenger?id='+ localStorage.getItem("tokenID");
+  return this.http.get(this.ispassengertravelURL);
+}
+
+////////////////////////////////////////////////////////////
+
 }
