@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   ClickBotonOfrecerPuesto() {
-    this.vehicleService.ispassengertravelService().subscribe((mensaje: any)=> {
+    this.vehicleService.isdrivertravelService().subscribe((mensaje: any)=> {
       if (mensaje == true) {
         this.toastr.success('Ya registraste un viaje');
         this.router.navigate(['/offered']);

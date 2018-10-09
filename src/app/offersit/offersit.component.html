@@ -14,7 +14,7 @@
           <th scope="row">{{vehiculo.numberplate}}</th>
           <td>{{vehiculo.type}}</td>
           <td>{{vehiculo.totalseats}}</td>
-          <button class="btn btn-dark" (click)=elegirVehiculo(vehiculo.id)>Elegir</button>
+          <button class="btn btn-dark" (click)=elegirVehiculo(vehiculo.id,vehiculo.numberplate)>Elegir</button>
         </tr>
       </tbody>
     </table>

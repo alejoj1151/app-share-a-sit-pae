@@ -26,6 +26,7 @@ export class VehicleService {
 
   isdrivertravelURL; 
   ispassengertravelURL;
+  getpassengerstravelURL;
 
   constructor(private http: HttpClient) { }
 
@@ -126,5 +127,14 @@ ispassengertravelService() {
 }
 
 ////////////////////////////////////////////////////////////
+
+//////// SERVICIO PARA TRAER PASAJEROS DE UN VIAJE /////////
+
+getpassengertravelDriver() {
+  this.getpassengerstravelURL = 'http://localhost:8080/travels/listpassengers?id='+ localStorage.getItem("tokenID");
+  console.log(this.getpassengerstravelURL);
+  return this.http.get(this.getpassengerstravelURL);
+}
+////////////////////////////////////////////////////////////////
 
 }

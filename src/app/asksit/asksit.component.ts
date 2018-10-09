@@ -1,4 +1,4 @@
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { VehicleService } from '../shared/vehicle.service';
 import { NgForm } from '@angular/forms';

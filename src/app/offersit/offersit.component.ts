@@ -56,8 +56,9 @@ export class OffersitComponent implements OnInit {
 
   }
 
-  elegirVehiculo(idPassedFromNgClick){
+  elegirVehiculo(idPassedFromNgClick, vehiclenumber){
     localStorage.setItem("vehicleID",idPassedFromNgClick);
+    localStorage.setItem("vehicleNumber",vehiclenumber);
     //console.log(localStorage.getItem("vehicleID"));
   }
 

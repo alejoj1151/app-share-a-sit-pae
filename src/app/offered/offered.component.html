@@ -4,5 +4,34 @@
   Recuerde salir por lo menos con 15 minutos de anticipación, ya que el viaje entre sedes tiene una duración promedio de 10 minutos.
 </p>
 
-<button type="button" class="btn btn-dark" (click)="iniciarViaje()" >Iniciar viaje</button>
+<button type="button" class="btn btn-dark" (click)="listaPasajeros()" >Refrescar lista</button>
+
+<p class="lead">
+  Información del viaje:
+  <li>Nombre: {{nombreusuario}}</li>
+   <li>Placa del vehículo: {{vehicleNumber}}</li>
+ </p>
+
+
+<p class="lead">Lista de pasajeros</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let pasajero of pasajeros">
+          <th scope="row">{{pasajero.firstname}}</th>
+          <td>{{pasajero.lastname}}</td>
+          <td>{{pasajero.document}}</td>
+          <td>{{pasajero.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
