@@ -17,6 +17,9 @@ import { SignUpVehicleComponent } from './sign-up-vehicle/sign-up-vehicle.compon
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SittakenComponent } from './sittaken/sittaken.component';
+import { OfferedComponent } from './offered/offered.component';
+import { LoginGuard } from './login.guard';
+import { NoLoginGuard } from './no-login.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { SittakenComponent } from './sittaken/sittaken.component';
     AsksitComponent,
     OffersitComponent,
     SignUpVehicleComponent,
-    SittakenComponent
+    SittakenComponent,
+    OfferedComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,7 @@ import { SittakenComponent } from './sittaken/sittaken.component';
     BrowserAnimationsModule
   ],
   //exports: [SignUpComponent],
-  providers: [UserService,LoginService],
+  providers: [UserService,LoginService,LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

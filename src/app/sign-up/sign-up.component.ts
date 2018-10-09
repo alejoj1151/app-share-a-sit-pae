@@ -5,6 +5,7 @@ import { unwrapValue } from '@angular/core/src/view';
 import { ToastrService } from 'ngx-toastr'
 import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,10 +19,12 @@ export class SignUpComponent implements OnInit {
 
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@unal.edu.co$";
-  constructor(private userService: UserService, private toastr: ToastrService,private router : Router) { }
+  constructor(private userService: UserService, private toastr: ToastrService,private router : Router,private appcomp : AppComponent) { }
 
   ngOnInit() {
     this.resetForm();
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(false);
   }
   
   resetForm(form?: NgForm) {

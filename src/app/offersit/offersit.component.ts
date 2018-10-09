@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { VehicleService } from '../shared/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -23,18 +25,20 @@ export class OffersitComponent implements OnInit {
   vehiculos = []; //lista donde se guardan los vehiculos obtenidos por el servicio getListVehicles
   
 
-  constructor(private vehicleService: VehicleService, private toastr: ToastrService) { }
+  constructor(private vehicleService: VehicleService, private toastr: ToastrService,private router : Router,private appcomp : AppComponent) { }
 
   ngOnInit() {
     //this.vehiculos=[];
     this.ofrecerpuesto();
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(true);
   }
 
   ofrecerpuesto(){
     //var jsonlistveh = localStorage.getItem("listavehiculos");
     
     this.vehicleService.gelistvehicles(this.listavehiculos).subscribe((listvehiclesjson : any) =>{
-      console.log(listvehiclesjson);
+      //console.log(listvehiclesjson);
       for (var i=0; i< listvehiclesjson.length; i++) {
         var obj = listvehiclesjson[i];
         this.vehiculos.push(listvehiclesjson[i]); //guarda los vehiculos en la lista para luego recorrerlos en la vista
@@ -54,7 +58,7 @@ export class OffersitComponent implements OnInit {
 
   elegirVehiculo(idPassedFromNgClick){
     localStorage.setItem("vehicleID",idPassedFromNgClick);
-    console.log(localStorage.getItem("vehicleID"));
+    //console.log(localStorage.getItem("vehicleID"));
   }
 
   ofrecerpuestoBoton(){
@@ -62,6 +66,7 @@ export class OffersitComponent implements OnInit {
     this.vehicleService.registerTravel(this.puestosaofrecer,this.sededestino,this.horasalida).subscribe((mensaje: any)=> {
       if (mensaje !== null) {
         this.toastr.success('Viaje registrado');
+        this.router.navigate(['/offered']);
         return true;
       }
       else

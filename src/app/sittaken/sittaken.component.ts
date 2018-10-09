@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { VehicleService } from '../shared/vehicle.service';
+import { AsksitComponent } from '../asksit/asksit.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-sittaken',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sittaken.component.css']
 })
 export class SittakenComponent implements OnInit {
+  
 
-  constructor() { }
+  constructor(private router : Router, private vehicleserive : VehicleService, private appcomp : AppComponent) { }
+  
+  nombreconductor = localStorage.getItem("nombreconductor");
+  placavehiculotomado= localStorage.getItem("placavehiculotomado");
 
   ngOnInit() {
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(true);
   }
+
+
+  //arreglo = this.asksitComp.filtrados;
+  
 
 }

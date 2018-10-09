@@ -20,7 +20,8 @@
           <p class="lead">Una alternativa de movilidad en la Universidad Nacional</p>
         </div>
         <div class="container" style="text-align: right">
-          <button type="button" class="btn btn-primary" routerLink="login">Entrar</button>
+          <button type="button" class="btn btn-primary" routerLink="login" *ngIf="a">Entrar</button>
+          <a href="/login" (click)="cerrarSesion()" *ngIf="showcerrar">Cerrar Sesión</a>
         </div>
       </div>
   

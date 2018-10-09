@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { VehicleService } from '../shared/vehicle.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SittakenComponent } from '../sittaken/sittaken.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-asksit',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AsksitComponent implements OnInit {
 
-  constructor(private vehicleService: VehicleService, private toastr: ToastrService,private router : Router) { }
+  constructor(private vehicleService: VehicleService, private toastr: ToastrService,private router : Router,private appcomp : AppComponent) { }
 
   hourpattern = '^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$';
   horasalida;
@@ -21,6 +23,8 @@ export class AsksitComponent implements OnInit {
   filtrados = []; //viajes filtrados
 
   ngOnInit() {
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(true);
   }
 
   resetForm(form?: NgForm) {
@@ -34,7 +38,7 @@ export class AsksitComponent implements OnInit {
   filterTravelsBoton(){
     //table.reset();
     this.filtrados=[];
-    console.log(this.horainicio,this.horasalida,this.origen);
+    //console.log(this.horainicio,this.horasalida,this.origen);
     this.vehicleService.filterTravel(this.horainicio,this.horasalida,this.origen).subscribe((travlistjson:any) =>{
       if (travlistjson != null) {
         this.toastr.success('Filtrado exitoso');
@@ -54,11 +58,12 @@ export class AsksitComponent implements OnInit {
       this.origen=null;
     
     });
-    console.log(this.filtrados);
+    //console.log(this.filtrados);
     
   }
-  reservarPuesto(idVehiculo){
-    
+  reservarPuesto(idVehiculo,nombreconductor,placavehiculotomado){
+    localStorage.setItem("nombreconductor",nombreconductor);
+    localStorage.setItem("placavehiculotomado",placavehiculotomado);
     this.vehicleService.takesitService(idVehiculo).subscribe((respuesta:any) =>{
       if (respuesta == true) {
         this.router.navigate(['/sittaken']);

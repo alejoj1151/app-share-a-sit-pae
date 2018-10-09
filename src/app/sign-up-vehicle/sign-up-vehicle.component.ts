@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { VehicleService } from '../shared/vehicle.service';
 import { NgForm } from '@angular/forms';
 import { Vehicle } from '../models/vehicle.model';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-sign-up-vehicle',
@@ -13,10 +14,12 @@ import { Vehicle } from '../models/vehicle.model';
 export class SignUpVehicleComponent implements OnInit {
 
   vehicle : Vehicle;
-  constructor(private vehicleService: VehicleService, private toastr: ToastrService,private router : Router) { }
+  constructor(private vehicleService: VehicleService, private toastr: ToastrService,private router : Router,private appcomp : AppComponent) { }
 
   ngOnInit() {
     this.resetForm();
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(true);
   }
   
   platetodelete; //viene del html

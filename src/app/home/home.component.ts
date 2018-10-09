@@ -3,6 +3,7 @@ import { VehicleService } from '../shared/vehicle.service';
 import { Vehicle } from '../models/vehicle.model';
 import { Router } from '@angular/router';
 import { OffersitComponent } from '../offersit/offersit.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,11 @@ import { OffersitComponent } from '../offersit/offersit.component';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(private vehicleService: VehicleService,private router : Router) { }
+  constructor(private vehicleService: VehicleService,private router : Router, private appcomp : AppComponent) { }
 
   ngOnInit() {
+    this.appcomp.desactivarBoton(false);
+    this.appcomp.mostrarcerrarsesion(true);
   }
 
   nomusuario = localStorage.getItem("nombreusuario");

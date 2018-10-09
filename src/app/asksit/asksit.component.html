@@ -22,9 +22,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Destino</th>
+          <th scope="col">Origen</th>
           <th scope="col">Hora Salida</th>
           <th scope="col">Vehículo</th>
+          <th scope="col">Placa</th>
           <th scope="col">Puestos disponibles</th>
           <th scope="col">Reservar</th>
         </tr>
@@ -34,8 +35,9 @@
           <th scope="row">{{filtrado.destination}}</th>
           <td>{{filtrado.hour}}</td>
           <td>{{filtrado.vehicle.type}}</td>
+          <td>{{filtrado.vehicle.numberplate}}</td>
           <td>{{filtrado.available_seats}}</td>
-          <td><button type="button" class="btn btn-dark" (click)="reservarPuesto(filtrado.vehicle.id)">Reservar</button></td>
+          <td><button type="button" class="btn btn-dark" (click)="reservarPuesto(filtrado.vehicle.id,filtrado.driver.firstname,filtrado.vehicle.numberplate)">Reservar</button></td>
         </tr>
       </tbody>
     </table>
